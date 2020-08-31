@@ -1,7 +1,7 @@
-name: "lecture-supplement-categorical-data-analysis"
+name: lecture-supplement-categorical-data-analysis
 output_dir: ../docs
 navbar:
-  title: "lecture-supplement-categorical-data-analysis"
+  title: lecture-supplement-categorical-data-analysis
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/han16/lecture-supplement-categorical-data-analysis
 output:
   workflowr::wflow_html:
     toc: yes
