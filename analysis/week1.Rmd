@@ -5,10 +5,26 @@ date: "2020-08-31"
 output: workflowr::wflow_html
 ---
 
-this is week 1. test 
+
+## Statistical inference for discrete data 
+
+### Wald, Likelihood ratio and score inference 
+Let $\beta$  be an arbitrary parameter that we want to do a significance test $H_0: \beta=\beta_0$. 
+
+#### Wald inference 
+
+Let $\widehat{\beta}$ be the maximum likelihood estimate (ML) of $\beta$ and SE is the standard error (which is a function of unknown parameters) of $\widehat{\beta}$, evaluated by substituting MLE for unknown parameters. 
+
+under $H_0$,
+$$ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)$$
 
 
+### Wald, Likelihood ratio and score inference for Binomial parameter
 
+
+### Small sample Bionomial inference 
+
+### Inference based on Mid P-value 
 ```{r}
 
 ```

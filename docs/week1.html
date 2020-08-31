@@ -520,10 +520,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistree56a336673c2d1bf36d15018d1f03d09c94a22746targetblank56a3366a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/56a336673c2d1bf36d15018d1f03d09c94a22746" target="_blank">56a3366</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreed193ca4981124a753c6354f2e74c44ee44365426targetblankd193ca4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/d193ca4981124a753c6354f2e74c44ee44365426" target="_blank">d193ca4</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistree56a336673c2d1bf36d15018d1f03d09c94a22746targetblank56a3366a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreed193ca4981124a753c6354f2e74c44ee44365426targetblankd193ca4a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -574,6 +574,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/blob/d193ca4981124a753c6354f2e74c44ee44365426/analysis/week1.Rmd" target="_blank">d193ca4</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-08-31
+</td>
+<td>
+8/31/2020
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/han16/lecture-supplement-categorical-data-analysis/d193ca4981124a753c6354f2e74c44ee44365426/docs/week1.html" target="_blank">d193ca4</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-08-31
+</td>
+<td>
+8/31/2020
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/blob/56a336673c2d1bf36d15018d1f03d09c94a22746/analysis/week1.Rmd" target="_blank">56a3366</a>
 </td>
 <td>
@@ -610,7 +644,25 @@ han16
 </div>
 </div>
 </div>
-<p>this is week 1. test</p>
+<div id="statistical-inference-for-discrete-data" class="section level2">
+<h2>Statistical inference for discrete data</h2>
+<div id="wald-likelihood-ratio-and-score-inference" class="section level3">
+<h3>Wald, Likelihood ratio and score inference</h3>
+<p>Let <span class="math inline">\(\beta\)</span> be an arbitrary parameter that we want to do a significance test <span class="math inline">\(H_0: \beta=\beta_0\)</span>.</p>
+<div id="wald-inference" class="section level4">
+<h4>Wald inference</h4>
+<p>Let <span class="math inline">\(\widehat{\beta}\)</span> be the maximum likelihood estimate (ML) of <span class="math inline">\(\beta\)</span> and SE is the standard error (which is a function of unknown parameters) of <span class="math inline">\(\widehat{\beta}\)</span>, evaluated by substituting MLE for unknown parameters.</p>
+<p>under <span class="math inline">\(H_0\)</span>, <span class="math display">\[ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)\]</span></p>
+</div>
+</div>
+<div id="wald-likelihood-ratio-and-score-inference-for-binomial-parameter" class="section level3">
+<h3>Wald, Likelihood ratio and score inference for Binomial parameter</h3>
+</div>
+<div id="small-sample-bionomial-inference" class="section level3">
+<h3>Small sample Bionomial inference</h3>
+</div>
+<div id="inference-based-on-mid-p-value" class="section level3">
+<h3>Inference based on Mid P-value</h3>
 <br> <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -639,6 +691,8 @@ loaded via a namespace (and not attached):
  [9] stringi_1.3.1   fs_1.2.6        whisker_0.3-2   rmarkdown_1.11 
 [13] tools_3.5.1     stringr_1.4.0   glue_1.3.0      xfun_0.4       
 [17] yaml_2.2.0      compiler_3.5.1  htmltools_0.3.6 knitr_1.21     </code></pre>
+</div>
+</div>
 </div>
 
 
