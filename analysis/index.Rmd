@@ -1,9 +1,9 @@
 ---
-title: "Home"
+title: "Lecture supplement"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
     toc: false
 ---
+[week 1](week1.html)
 
-Welcome to my research website.
