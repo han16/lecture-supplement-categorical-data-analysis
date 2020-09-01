@@ -520,10 +520,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreed193ca4981124a753c6354f2e74c44ee44365426targetblankd193ca4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/d193ca4981124a753c6354f2e74c44ee44365426" target="_blank">d193ca4</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreeaa1a7b2cef84c291b6aca8bc8e6b113a8123a241targetblankaa1a7b2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/aa1a7b2cef84c291b6aca8bc8e6b113a8123a241" target="_blank">aa1a7b2</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreed193ca4981124a753c6354f2e74c44ee44365426targetblankd193ca4a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreeaa1a7b2cef84c291b6aca8bc8e6b113a8123a241targetblankaa1a7b2a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -569,6 +569,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/blob/aa1a7b2cef84c291b6aca8bc8e6b113a8123a241/analysis/week1.Rmd" target="_blank">aa1a7b2</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-08-31
+</td>
+<td>
+8/31/2020
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/han16/lecture-supplement-categorical-data-analysis/aa1a7b2cef84c291b6aca8bc8e6b113a8123a241/docs/week1.html" target="_blank">aa1a7b2</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-08-31
+</td>
+<td>
+8/31/2020
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -652,11 +686,26 @@ han16
 <div id="wald-inference" class="section level4">
 <h4>Wald inference</h4>
 <p>Let <span class="math inline">\(\widehat{\beta}\)</span> be the maximum likelihood estimate (ML) of <span class="math inline">\(\beta\)</span> and SE is the standard error (which is a function of unknown parameters) of <span class="math inline">\(\widehat{\beta}\)</span>, evaluated by substituting MLE for unknown parameters.</p>
-<p>under <span class="math inline">\(H_0\)</span>, <span class="math display">\[ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)\]</span></p>
+<p>under <span class="math inline">\(H_0\)</span>, <span class="math display">\[ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)\]</span> or equivalently, <span class="math inline">\(z^2 \sim \chi^2_1\)</span>. The statistics that uses the standard error evaluated at MLE, is called <strong>Wald statistics</strong>. <span class="math inline">\(z\)</span> is called <strong>Wald test</strong>.</p>
+</div>
+<div id="likelihood-ratio-test" class="section level4">
+<h4>Likelihood ratio test</h4>
+<p>The test statistics is</p>
+<p><span class="math display">\[-2log(\frac{\ell_0}{\ell_1}) \sim \chi^2_1 ~~(approximately)\]</span> <span class="math inline">\(\ell_0\)</span> is the maximum of likelihood function under null hypothesis and <span class="math inline">\(\ell_0\)</span> is the maximum value under null and alternative hypothesis.</p>
+<p>It holds that <span class="math inline">\(\frac{\ell_0}{\ell_1}\leq 1\)</span> (why?) and small value of it indicates strong evidence against <span class="math inline">\(H_0\)</span> (why?).</p>
+</div>
+<div id="score-test" class="section level4">
+<h4>score test</h4>
+<p>Score test calculates the standard error under null hypothesis.</p>
 </div>
 </div>
 <div id="wald-likelihood-ratio-and-score-inference-for-binomial-parameter" class="section level3">
 <h3>Wald, Likelihood ratio and score inference for Binomial parameter</h3>
+<p>Use the clinical trial example that there are 9 successes in the first 10 trials, test <span class="math inline">\(H_0: \pi=0.5\)</span> vs <span class="math inline">\(H_a: \pi\neq 0.5\)</span>.</p>
+<p>For Wald test, <span class="math inline">\(\widehat{\pi}=0.9\)</span> and SE is <span class="math inline">\(\sqrt{\widehat{\pi}(1-\widehat{\pi})/n}=\sqrt{0.9\times 0.1/10}=0.095\)</span>. so <span class="math inline">\(z=\frac{0.9-0.5}{0.095}=4.22\)</span>, p value is <span class="math inline">\(p=2\times prob(Z&gt;4.22)=2.443023e-05\)</span>. The corresponding <span class="math inline">\(\chi^2\)</span> test statistics is <span class="math inline">\(4.22^2=17.8\)</span>. p value is <span class="math inline">\(prob(\chi^2&gt;17.8)\)</span>.</p>
+<p>For score test, under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\pi=0.5\)</span>, SE is <span class="math inline">\(\sqrt{0.5*0.5/10}=0.158\)</span>, and <span class="math inline">\(z=\frac{0.9-0.5}{0.158}=2.53\)</span>, p value is <span class="math inline">\(2\times porb(Z&gt;2.53)=0.011\)</span>.</p>
+<p>For likelihood ratio test, <span class="math inline">\(\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.00977\)</span> and <span class="math inline">\(\ell_1=\frac{10!}{9!\times 1!}\times 0.9^9 0.1^1=0.3874\)</span>, so <span class="math inline">\(-2log(\frac{\ell_0}{\ell_1})=7.36\)</span> and p value is <span class="math inline">\(prob(\chi^2&gt;7.36)=0.007\)</span>.</p>
+<p>When sample size is small to moderate, the wald test is least reliable and not trustworthy.</p>
 </div>
 <div id="small-sample-bionomial-inference" class="section level3">
 <h3>Small sample Bionomial inference</h3>

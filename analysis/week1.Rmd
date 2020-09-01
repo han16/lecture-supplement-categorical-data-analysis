@@ -17,9 +17,36 @@ Let $\widehat{\beta}$ be the maximum likelihood estimate (ML) of $\beta$ and SE 
 
 under $H_0$,
 $$ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)$$
+or equivalently, $z^2 \sim \chi^2_1$. The statistics that uses the standard error evaluated at MLE, is called **Wald statistics**. $z$ is called **Wald test**. 
 
+#### Likelihood ratio test 
+
+The test statistics is 
+
+$$-2log(\frac{\ell_0}{\ell_1}) \sim \chi^2_1 ~~(approximately)$$
+$\ell_0$ is the maximum of likelihood function under null hypothesis and $\ell_0$ is the maximum value under null and alternative hypothesis. 
+
+It holds that $\frac{\ell_0}{\ell_1}\leq 1$ (why?) and small value of it indicates strong evidence against $H_0$ (why?). 
+
+
+#### score test 
+
+Score test calculates the standard error under null hypothesis. 
 
 ### Wald, Likelihood ratio and score inference for Binomial parameter
+
+Use the clinical trial example that there are 9 successes in the first 10 trials, test $H_0: \pi=0.5$ vs $H_a: \pi\neq 0.5$. 
+
+For Wald test, $\widehat{\pi}=0.9$ and SE is $\sqrt{\widehat{\pi}(1-\widehat{\pi})/n}=\sqrt{0.9\times 0.1/10}=0.095$. 
+so $z=\frac{0.9-0.5}{0.095}=4.22$, p value is $p=2\times prob(Z>4.22)=2.443023e-05$. The corresponding $\chi^2$ test statistics is $4.22^2=17.8$. p value is $prob(\chi^2>17.8)$. 
+
+
+For score test, under $H_0$, $\pi=0.5$, SE is $\sqrt{0.5*0.5/10}=0.158$, and $z=\frac{0.9-0.5}{0.158}=2.53$, p value is $2\times porb(Z>2.53)=0.011$. 
+
+For likelihood ratio test, $\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.00977$ and $\ell_1=\frac{10!}{9!\times 1!}\times 0.9^9 0.1^1=0.3874$, so $-2log(\frac{\ell_0}{\ell_1})=7.36$ and p value is $prob(\chi^2>7.36)=0.007$. 
+
+
+When sample size is small to moderate, the wald test is least reliable and not trustworthy. 
 
 
 ### Small sample Bionomial inference 
