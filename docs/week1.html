@@ -441,7 +441,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-08-31
+<strong>Last updated:</strong> 2020-09-07
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -520,15 +520,18 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreeaa1a7b2cef84c291b6aca8bc8e6b113a8123a241targetblankaa1a7b2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/aa1a7b2cef84c291b6aca8bc8e6b113a8123a241" target="_blank">aa1a7b2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistree3c713ac10ba97a86a969e8881616be6cc65a498etargetblank3c713aca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/tree/3c713ac10ba97a86a969e8881616be6cc65a498e" target="_blank">3c713ac</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistreeaa1a7b2cef84c291b6aca8bc8e6b113a8123a241targetblankaa1a7b2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomhan16lecturesupplementcategoricaldataanalysistree3c713ac10ba97a86a969e8881616be6cc65a498etargetblank3c713aca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+
 Unstaged changes:
     Modified:   analysis/week1.Rmd
 
@@ -569,6 +572,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/han16/lecture-supplement-categorical-data-analysis/blob/3c713ac10ba97a86a969e8881616be6cc65a498e/analysis/week1.Rmd" target="_blank">3c713ac</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-09-01
+</td>
+<td>
+9/1/2020
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/han16/lecture-supplement-categorical-data-analysis/3c713ac10ba97a86a969e8881616be6cc65a498e/docs/week1.html" target="_blank">3c713ac</a>
+</td>
+<td>
+han16
+</td>
+<td>
+2020-09-01
+</td>
+<td>
+9/1/2020
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -680,6 +717,34 @@ han16
 </div>
 <div id="statistical-inference-for-discrete-data" class="section level2">
 <h2>Statistical inference for discrete data</h2>
+<pre><code>── Attaching packages ──────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>✔ ggplot2 3.1.0       ✔ purrr   0.3.0  
+✔ tibble  2.0.1       ✔ dplyr   0.8.0.1
+✔ tidyr   0.8.2       ✔ stringr 1.4.0  
+✔ readr   1.3.1       ✔ forcats 0.3.0  </code></pre>
+<pre><code>Warning: package &#39;tibble&#39; was built under R version 3.5.2</code></pre>
+<pre><code>Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>── Conflicts ─────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>nsuccesses=400
+nfailure=493
+ntrials=nsuccesses+nfailure
+p=0.5
+binom.test(nsuccesses, ntrials, p)</code></pre>
+<pre><code>
+    Exact binomial test
+
+data:  nsuccesses and ntrials
+number of successes = 400, number of trials = 893, p-value =
+0.002062
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.4149709 0.4812303
+sample estimates:
+probability of success 
+             0.4479283 </code></pre>
 <div id="wald-likelihood-ratio-and-score-inference" class="section level3">
 <h3>Wald, Likelihood ratio and score inference</h3>
 <p>Let <span class="math inline">\(\beta\)</span> be an arbitrary parameter that we want to do a significance test <span class="math inline">\(H_0: \beta=\beta_0\)</span>.</p>
@@ -707,12 +772,126 @@ han16
 <p>For likelihood ratio test, <span class="math inline">\(\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.00977\)</span> and <span class="math inline">\(\ell_1=\frac{10!}{9!\times 1!}\times 0.9^9 0.1^1=0.3874\)</span>, so <span class="math inline">\(-2log(\frac{\ell_0}{\ell_1})=7.36\)</span> and p value is <span class="math inline">\(prob(\chi^2&gt;7.36)=0.007\)</span>.</p>
 <p>When sample size is small to moderate, the wald test is least reliable and not trustworthy.</p>
 </div>
-<div id="small-sample-bionomial-inference" class="section level3">
-<h3>Small sample Bionomial inference</h3>
+<div id="small-sample-binomial-inference" class="section level3">
+<h3>Small sample Binomial inference</h3>
+<p>When the sample size is small, it’s safer to use binomial dustribution to calculate p value directly.</p>
+<p>In the clinical trial example that they observe <span class="math inline">\(y=9\)</span> successes in <span class="math inline">\(n=10\)</span> trials, consider the test <span class="math inline">\(H_0: \pi=0.5\)</span> vs <span class="math inline">\(H_a: \pi&gt;0.5\)</span>. p value is <span class="math inline">\(p(Y\geq 9)=\sum_{y\geq 9} {10\choose y} 0.5^y0.5^{10-y}=0.011\)</span>.</p>
+<p>If the alternative hypothesis is two sided as <span class="math inline">\(H_a: \pi\neq0.5\)</span>, p value is <span class="math inline">\(p(Y\geq 9 or Y\leq 1)=2\times p(Y\geq 9)=0.021\)</span>.</p>
+</div>
+<div id="small-sample-discrete-inference-is-conservative" class="section level3">
+<h3>Small sample discrete inference is conservative</h3>
+<p>Because of the nature of discreteness of the distribution, small sample inference using ordinary p values is <strong>conservative</strong> in the sense that when <span class="math inline">\(H_0\)</span> is true, the <span class="math inline">\(p-val&lt;5\%\)</span> is not <strong>exactly</strong> <span class="math inline">\(5\%\)</span> of the time, but typically less than <span class="math inline">\(5\%\)</span>. It’s usually not possible for a p-value to achieve the desired significance level <em>exactly</em> and the actual probability of type I error is less than <span class="math inline">\(5\%\)</span>.</p>
+<p>Again consider the test <span class="math inline">\(H_0:\pi=0.5\)</span> vs <span class="math inline">\(H_a:\pi\geq 0.5\)</span> in the clinical trial example above.</p>
+<table>
+<caption>Table 1.2 Null Binomial distribution and one sided p-values for Testing <span class="math inline">\(H_0:\pi=0.5\)</span> against <span class="math inline">\(H_a: \pi&gt;0.5\)</span> with <span class="math inline">\(n=10\)</span>.</caption>
+<thead>
+<tr class="header">
+<th>y</th>
+<th>P(y)</th>
+<th>P-value(<span class="math inline">\(p(Y\geq y)\)</span>)</th>
+<th>Mid p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.001</td>
+<td>1.000</td>
+<td>0.9995</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.010</td>
+<td>0.999</td>
+<td>0.994</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.044</td>
+<td>0.989</td>
+<td>0.967</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.117</td>
+<td>0.945</td>
+<td>0.887</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.205</td>
+<td>0.828</td>
+<td>0.726</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0.246</td>
+<td>0.623</td>
+<td>0.500</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0.205</td>
+<td>0.377</td>
+<td>0.274</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0.117</td>
+<td>0.172</td>
+<td>0.113</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>0.044</td>
+<td>0.055</td>
+<td>0.033</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>0.010</td>
+<td>0.011</td>
+<td>0.006</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0.001</td>
+<td>0.001</td>
+<td>0.0005</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>counts=seq(0,10)
+prob=round(dbinom(counts, 10, prob=0.5),3) # null distribution 
+pvalue=round(pbinom(counts-1, size=10, prob=0.5, lower.tail = F),3)
+mid.pvalue=round(prob/2+pbinom(counts, size=10, prob=0.5, lower.tail = F),4)
+null_binom_dist=tibble(counts=counts, prob=prob, pvalue=pvalue, mid.pvalue=mid.pvalue)
+null_binom_dist %&gt;% print(n=11)</code></pre>
+<pre><code># A tibble: 11 x 4
+   counts  prob pvalue mid.pvalue
+    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+ 1      0 0.001  1         1.000 
+ 2      1 0.01   0.999     0.994 
+ 3      2 0.044  0.989     0.967 
+ 4      3 0.117  0.945     0.887 
+ 5      4 0.205  0.828     0.726 
+ 6      5 0.246  0.623     0.5   
+ 7      6 0.205  0.377     0.274 
+ 8      7 0.117  0.172     0.113 
+ 9      8 0.044  0.055     0.0327
+10      9 0.01   0.011     0.006 
+11     10 0.001  0.001     0.0005</code></pre>
+<p>p value is less than <span class="math inline">\(5\%\)</span>, when <span class="math inline">\(y=9, 10\)</span>. But the total probability is <span class="math inline">\(p(Y=9)+p(Y=10)=0.010+0.001=0.011 &lt;&lt;0.05\)</span>. so the actual probability of type I error is much less than the desired significane level.</p>
+<p>If the test statistic has a continuous distribution, the p value has uniform null distribution over the interval <span class="math inline">\([0,1]\)</span>. That is when <span class="math inline">\(H_0\)</span> is true, p value is equally likely to fall anywhere within interval <span class="math inline">\([0,1]\)</span>. <strong>The probability that p value falls below <span class="math inline">\(5\%\)</span> is exactly <span class="math inline">\(5\%\)</span> and the expected p value is 0.5</strong>. However, a test statostoics having discrete distribution has the discrete null distribution of p values and expected p value is greater than 0.5.</p>
+<p>In the binomial example, the null expected p value is <span class="math inline">\(\sum P(Y=y) \times p-value=0.59&gt;0.5\)</span>.</p>
+<pre class="r"><code>sum(null_binom_dist$prob*null_binom_dist$pvalue)</code></pre>
+<pre><code>[1] 0.588009</code></pre>
 </div>
 <div id="inference-based-on-mid-p-value" class="section level3">
 <h3>Inference based on Mid P-value</h3>
-<br> <br>
+<p>With small sample size in discrete data, it is preferable to use <strong>mid P-value</strong> which adds half the probability of the observed result to the probability of the more extreme results.</p>
+<p>In the binomial example mentioned above, for the test <span class="math inline">\(H_0: \pi=0.5\)</span> vs <span class="math inline">\(H_a:\pi&gt;0.5\)</span>, the ordinary p value is <span class="math inline">\(p(Y=9)+p(Y=10)=0.011\)</span>. For the test <span class="math inline">\(H_0: \pi=0.5\)</span> vs <span class="math inline">\(H_a:\pi&lt;0.5\)</span>, the ordinary p value is <span class="math inline">\(p(Y=0)+p(Y=1)+\cdots+p(Y=9)=0.999\)</span>. Apparently, <span class="math inline">\(p(Y=9)\)</span> is counted in each p value. But if use mid p value, it becomes for <span class="math inline">\(H_a:\pi&gt;0.5\)</span>, p value is <span class="math inline">\(p(Y=9)/2+p(Y=10)=0.006\)</span> and for <span class="math inline">\(H_a:\pi&lt;0.5\)</span>, p value is <span class="math inline">\(p(Y=0)+p(Y=1)+\cdots+p(Y=9)/2=0.994\)</span>. These two mid p values sum to 1.</p>
+For small sample size, one can construct confidence interval by using binomial distribution, not normal approximation. <br> <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
@@ -734,12 +913,25 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] forcats_0.3.0   stringr_1.4.0   dplyr_0.8.0.1   purrr_0.3.0    
+[5] readr_1.3.1     tidyr_0.8.2     tibble_2.0.1    ggplot2_3.1.0  
+[9] tidyverse_1.2.1
+
 loaded via a namespace (and not attached):
- [1] workflowr_1.2.0 Rcpp_1.0.0      digest_0.6.18   rprojroot_1.3-2
- [5] backports_1.1.3 git2r_0.24.0    magrittr_1.5    evaluate_0.13  
- [9] stringi_1.3.1   fs_1.2.6        whisker_0.3-2   rmarkdown_1.11 
-[13] tools_3.5.1     stringr_1.4.0   glue_1.3.0      xfun_0.4       
-[17] yaml_2.2.0      compiler_3.5.1  htmltools_0.3.6 knitr_1.21     </code></pre>
+ [1] Rcpp_1.0.0       cellranger_1.1.0 plyr_1.8.4       pillar_1.3.1    
+ [5] compiler_3.5.1   git2r_0.24.0     workflowr_1.2.0  tools_3.5.1     
+ [9] digest_0.6.18    lubridate_1.7.4  jsonlite_1.6     evaluate_0.13   
+[13] nlme_3.1-137     gtable_0.2.0     lattice_0.20-38  pkgconfig_2.0.2 
+[17] rlang_0.3.1      cli_1.0.1        rstudioapi_0.9.0 yaml_2.2.0      
+[21] haven_2.0.0      xfun_0.4         withr_2.1.2      xml2_1.2.0      
+[25] httr_1.4.0       knitr_1.21       hms_0.4.2        generics_0.0.2  
+[29] fs_1.2.6         rprojroot_1.3-2  grid_3.5.1       tidyselect_0.2.5
+[33] glue_1.3.0       R6_2.4.0         fansi_0.4.0      readxl_1.3.0    
+[37] rmarkdown_1.11   modelr_0.1.3     magrittr_1.5     whisker_0.3-2   
+[41] backports_1.1.3  scales_1.0.0     htmltools_0.3.6  rvest_0.3.2     
+[45] assertthat_0.2.0 colorspace_1.4-0 utf8_1.1.4       stringi_1.3.1   
+[49] lazyeval_0.2.1   munsell_0.5.0    broom_0.5.1      crayon_1.3.4    </code></pre>
 </div>
 </div>
 </div>

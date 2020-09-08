@@ -8,6 +8,18 @@ output: workflowr::wflow_html
 
 ## Statistical inference for discrete data 
 
+```{r, echo=F}
+library(tidyverse)
+```
+
+```{r, echo=T}
+nsuccesses=400
+nfailure=493
+ntrials=nsuccesses+nfailure
+p=0.5
+binom.test(nsuccesses, ntrials, p)
+```
+
 ### Wald, Likelihood ratio and score inference 
 Let $\beta$  be an arbitrary parameter that we want to do a significance test $H_0: \beta=\beta_0$. 
 
@@ -49,10 +61,64 @@ For likelihood ratio test, $\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.0
 When sample size is small to moderate, the wald test is least reliable and not trustworthy. 
 
 
-### Small sample Bionomial inference 
+### Small sample Binomial inference 
+
+When the sample size is small, it's safer to use binomial dustribution to calculate p value directly. 
+
+In the clinical trial example that they observe $y=9$ successes in $n=10$ trials, consider the test $H_0: \pi=0.5$ vs $H_a: \pi>0.5$. p value is $p(Y\geq 9)=\sum_{y\geq 9} {10\choose y} 0.5^y0.5^{10-y}=0.011$. 
+
+If the alternative hypothesis is two sided as $H_a: \pi\neq0.5$, p value is $p(Y\geq 9 or Y\leq 1)=2\times p(Y\geq 9)=0.021$. 
+
+### Small sample discrete inference is conservative 
+
+Because of the nature of discreteness of the distribution, small sample inference using ordinary p values is **conservative** in the sense that when $H_0$ is true, the $p-val<5\%$ is not **exactly** $5\%$ of the time, but typically less than $5\%$. It's usually not possible for a p-value to achieve the desired significance level *exactly* and the actual probability of type I error is less than $5\%$.  
+
+Again consider the test $H_0:\pi=0.5$ vs $H_a:\pi\geq 0.5$ in  the clinical trial example above. 
+
+| y | P(y) | P-value($p(Y\geq y)$) | Mid p-value |
+|----------------|-----------------------------------------------------------------------|---------------------------------------------------------|-------------------------------------|
+| 0 | 0.001 | 1.000 | 0.9995 |
+| 1 | 0.010 | 0.999 | 0.994 |
+| 2 | 0.044 | 0.989 | 0.967 |
+| 3 | 0.117 | 0.945 | 0.887 |
+| 4 | 0.205 | 0.828 | 0.726 |
+| 5 | 0.246 | 0.623 | 0.500 |
+| 6 | 0.205 | 0.377 | 0.274 |
+| 7 | 0.117 | 0.172 | 0.113 |
+| 8 | 0.044 | 0.055 | 0.033 |
+| 9 | 0.010 | 0.011 | 0.006 |
+| 10 | 0.001 | 0.001 | 0.0005 |
+Table: Table 1.2 Null Binomial distribution and one sided p-values for Testing $H_0:\pi=0.5$ against $H_a: \pi>0.5$ with $n=10$. 
+
+
+```{r, echo=T}
+counts=seq(0,10)
+prob=round(dbinom(counts, 10, prob=0.5),3) # null distribution 
+pvalue=round(pbinom(counts-1, size=10, prob=0.5, lower.tail = F),3)
+mid.pvalue=round(prob/2+pbinom(counts, size=10, prob=0.5, lower.tail = F),4)
+null_binom_dist=tibble(counts=counts, prob=prob, pvalue=pvalue, mid.pvalue=mid.pvalue)
+null_binom_dist %>% print(n=11)
+```
+
+ p value is less than $5\%$, when $y=9, 10$. But the total probability is $p(Y=9)+p(Y=10)=0.010+0.001=0.011 <<0.05$. so the actual probability of type I error is much less than the desired significane level.   
+
+
+If the test statistic has a continuous distribution, the p value has uniform null distribution over the interval $[0,1]$. That is when $H_0$ is true, p value is equally likely to fall anywhere within interval $[0,1]$. **The probability that p value falls below $5\%$ is exactly $5\%$ and the expected p value is 0.5**. 
+However, a test statostoics having discrete distribution has the discrete null distribution of p values and expected p value is greater than 0.5. 
+
+In the binomial example, the null expected p value is $\sum P(Y=y) \times p-value=0.59>0.5$.  
+
+```{r, echo=T}
+sum(null_binom_dist$prob*null_binom_dist$pvalue)
+```
 
 ### Inference based on Mid P-value 
 ```{r}
 
 ```
 
+With small sample size in discrete data, it is preferable to use **mid P-value** which adds half the probability of the observed result to the probability of the more extreme results. 
+
+In the binomial example mentioned above, for the test $H_0: \pi=0.5$ vs $H_a:\pi>0.5$, the ordinary p value is $p(Y=9)+p(Y=10)=0.011$. For the test $H_0: \pi=0.5$ vs $H_a:\pi<0.5$, the ordinary p value is $p(Y=0)+p(Y=1)+\cdots+p(Y=9)=0.999$. Apparently, $p(Y=9)$ is counted in each p value. But if use mid p value, it becomes for $H_a:\pi>0.5$, p value is  $p(Y=9)/2+p(Y=10)=0.006$ and for $H_a:\pi<0.5$, p value is $p(Y=0)+p(Y=1)+\cdots+p(Y=9)/2=0.994$. These two mid p values sum to 1. 
+
+For small sample size, one can construct confidence interval by using binomial distribution, not normal approximation. 
