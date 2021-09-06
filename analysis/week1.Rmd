@@ -1,14 +1,14 @@
 ---
 title: "week1"
 author: "Shengtong Han"
-date: "2020-08-31"
+date: ""
 output: workflowr::wflow_html
 ---
 
 
 ## Statistical inference for discrete data 
 
-```{r, echo=F}
+```{r, echo=F, warning=F, message=F}
 library(tidyverse)
 ```
 
@@ -25,10 +25,10 @@ Let $\beta$  be an arbitrary parameter that we want to do a significance test $H
 
 #### Wald inference 
 
-Let $\widehat{\beta}$ be the maximum likelihood estimate (ML) of $\beta$ and SE is the standard error (which is a function of unknown parameters) of $\widehat{\beta}$, evaluated by substituting MLE for unknown parameters. 
+Let $\widehat{\beta}$ be the maximum likelihood estimate (ML) of $\beta$ and SE is the standard error (which is a function of unknown parameters) of $\widehat{\beta}$, **evaluated by substituting MLE for unknown parameters**. 
 
 under $H_0$,
-$$ z=\frac{\widehat{\beta}-\widehat{\beta}_0}{SE} \sim N(0,1) ~~(approximately)$$
+$$ z=\frac{\widehat{\beta}-\beta_0}{SE} \sim N(0,1) ~~(approximately)$$
 or equivalently, $z^2 \sim \chi^2_1$. The statistics that uses the standard error evaluated at MLE, is called **Wald statistics**. $z$ is called **Wald test**. 
 
 #### Likelihood ratio test 
@@ -49,16 +49,16 @@ Score test calculates the standard error under null hypothesis.
 
 Use the clinical trial example that there are 9 successes in the first 10 trials, test $H_0: \pi=0.5$ vs $H_a: \pi\neq 0.5$. 
 
-For Wald test, $\widehat{\pi}=0.9$ and SE is $\sqrt{\widehat{\pi}(1-\widehat{\pi})/n}=\sqrt{0.9\times 0.1/10}=0.095$. 
+* For Wald test, $\widehat{\pi}=0.9$ and SE is $\sqrt{\widehat{\pi}(1-\widehat{\pi})/n}=\sqrt{0.9\times 0.1/10}=0.095$. 
 so $z=\frac{0.9-0.5}{0.095}=4.22$, p value is $p=2\times prob(Z>4.22)=2.443023e-05$. The corresponding $\chi^2$ test statistics is $4.22^2=17.8$. p value is $prob(\chi^2>17.8)$. 
 
 
-For score test, under $H_0$, $\pi=0.5$, SE is $\sqrt{0.5*0.5/10}=0.158$, and $z=\frac{0.9-0.5}{0.158}=2.53$, p value is $2\times porb(Z>2.53)=0.011$. 
+* For score test, under $H_0$, $\pi=0.5$, SE is $\sqrt{0.5*0.5/10}=0.158$, and $z=\frac{0.9-0.5}{0.158}=2.53$, p value is $2\times porb(Z>2.53)=0.011$. 
 
-For likelihood ratio test, $\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.00977$ and $\ell_1=\frac{10!}{9!\times 1!}\times 0.9^9 0.1^1=0.3874$, so $-2log(\frac{\ell_0}{\ell_1})=7.36$ and p value is $prob(\chi^2>7.36)=0.007$. 
+* For likelihood ratio test, $\ell_0=\frac{10!}{9!\times 1!}\times 0.5^9 0.5^1=0.00977$ and $\ell_1=\frac{10!}{9!\times 1!}\times 0.9^9 0.1^1=0.3874$, so $-2log(\frac{\ell_0}{\ell_1})=7.36$ and p value is $prob(\chi^2>7.36)=0.007$. 
 
 
-When sample size is small to moderate, the wald test is least reliable and not trustworthy. 
+**When sample size is small to moderate, the wald test is least reliable and not trustworthy**. 
 
 
 ### Small sample Binomial inference 
@@ -67,11 +67,11 @@ When the sample size is small, it's safer to use binomial dustribution to calcul
 
 In the clinical trial example that they observe $y=9$ successes in $n=10$ trials, consider the test $H_0: \pi=0.5$ vs $H_a: \pi>0.5$. p value is $p(Y\geq 9)=\sum_{y\geq 9} {10\choose y} 0.5^y0.5^{10-y}=0.011$. 
 
-If the alternative hypothesis is two sided as $H_a: \pi\neq0.5$, p value is $p(Y\geq 9 or Y\leq 1)=2\times p(Y\geq 9)=0.021$. 
+If the alternative hypothesis is two sided as $H_a: \pi\neq0.5$, p value is $p(Y\geq 9 ~or ~Y\leq 1)=2\times p(Y\geq 9)=0.021$. 
 
 ### Small sample discrete inference is conservative 
 
-Because of the nature of discreteness of the distribution, small sample inference using ordinary p values is **conservative** in the sense that when $H_0$ is true, the $p-val<5\%$ is not **exactly** $5\%$ of the time, but typically less than $5\%$. It's usually not possible for a p-value to achieve the desired significance level *exactly* and the actual probability of type I error is less than $5\%$.  
+Because of the nature of discreteness of the distribution, small sample inference using ordinary p values is **conservative** in the sense that when $H_0$ is true, the $p-val<5\%$ is not **exactly** $5\%$ of the time, but typically less than $5\%$. It's usually not possible for a p-value to achieve the desired significance level **exactly** and the actual probability of type I error is less than $5\%$.  
 
 Again consider the test $H_0:\pi=0.5$ vs $H_a:\pi\geq 0.5$ in  the clinical trial example above. 
 
